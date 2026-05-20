@@ -1,5 +1,6 @@
 package org.gabrielle;
 
+import org.gabrielle.database.DatabaseConnection;
 import org.gabrielle.dto.PdfData;
 import org.gabrielle.service.ExpenseParser;
 import org.gabrielle.service.PdfTextExtractor;
@@ -11,6 +12,8 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        DatabaseConnection.connect();
+
         PdfTextExtractor extractor = new PdfTextExtractor();
         ExpenseParser parser = new ExpenseParser();
 
