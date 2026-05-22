@@ -27,4 +27,8 @@ public class DatabaseConnection {
             System.err.println("Error connecting database: " + exception.getMessage());
         }
     }
+
+    public Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL);
+    }
 }

@@ -2,8 +2,8 @@ package org.gabrielle;
 
 import org.gabrielle.database.DatabaseConnection;
 import org.gabrielle.dto.PdfData;
-import org.gabrielle.service.ExpenseParser;
-import org.gabrielle.service.PdfTextExtractor;
+import org.gabrielle.repository.ExpenseRepository;
+import org.gabrielle.service.*;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -12,6 +12,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        ExpenseService service = new ExpenseService();
         DatabaseConnection.connect();
 
         PdfTextExtractor extractor = new PdfTextExtractor();
@@ -25,9 +26,9 @@ public class Main {
         }
 
         String text = extractor.extractText(pdfPath);
-
         List<PdfData> expenses = parser.parse(text);
 
-        System.out.println(expenses);
+        service.save(expenses);
+        service.delete(1);
     }
 }

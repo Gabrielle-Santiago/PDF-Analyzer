@@ -35,7 +35,7 @@ public class ExpenseParser {
                 String type = parts[1].trim();
                 Double value = Double.parseDouble(parts[2].trim());
 
-                PdfData expense = new PdfData(name, type, value);
+                PdfData expense = new PdfData(null, name, type, value);
 
                 expenses.add(expense);
 
